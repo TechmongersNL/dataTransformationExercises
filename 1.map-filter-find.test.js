@@ -1,5 +1,5 @@
 const pokemons = require('./pokeData')
-const { getPokeNames, findPokemonById } = require('./1.map-filter-find');
+const { getPokeNames, getPokemonById, getRarePokemons } = require('./1.map-filter-find');
 
 test('getPokeNames: Transforms an array of pokemons into an array of pokemon names', () => {
     const pokemonNames = getPokeNames(pokemons)
@@ -8,9 +8,16 @@ test('getPokeNames: Transforms an array of pokemons into an array of pokemon nam
     expect(pokemonNames[pokemonNames.length - 1]).toBe('Mew')
 });
 
-test('findPokemonById: Finds and returns a pokemon object by their id', () => {
+test('getPokemonById: Gets a pokemon object by their id', () => {
     const id = 25
-    const pokemon = findPokemonById(pokemons, id)
+    const pokemon = getPokemonById(pokemons, id)
+    expect(pokemon.id).toBe(25)
     expect(pokemon.name).toBe('Pikachu')
     expect(pokemon.height).toBe('0.41 m')
+})
+
+test('getRarePokemons: Transforms an array of pokemon into an array of "rare" (spawn_chance is less than 0.1) pokemon', () => {
+    const rarePokemon = getRarePokemons(pokemons)
+    expect(rarePokemon.length).toBe(81)
+    expect(rarePokemon.every(pokemon => pokemon.spawn_chance < 0.10)).toBe(true)
 })
