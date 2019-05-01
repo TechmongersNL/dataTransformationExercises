@@ -2,8 +2,12 @@ const pokemons = require('./pokeData')
 const trainers = require('./trainerData')
 const gyms = require('./gymData')
 
-
-const { getTrainerPokemons, getTrainersPokemons, getGymLeader } = require('./3.data-mining');
+const {
+    getTrainerPokemons,
+    getTrainersPokemons,
+    getGymLeader,
+    getBigGyms
+} = require('./3.data-mining');
 
 test('getGymleader: gets the gymleader belonging to a gym', () => {
     const fuchsiaCity = gyms.find(gym => gym.city === 'Fuchsia City')
@@ -40,4 +44,14 @@ test(`getTrainersPokemons: replaces trainerIds with
             }))
         })
     })
+})
+
+test('getBigGyms: gets the city names with gym leaders who have 4 pokemons or more', () => {
+    const bigGymCities = getBigGyms(gyms, trainers)
+    expect(bigGymCities).toEqual([
+        'Saffron City',
+        'Fuchsia City',
+        'Cinnabar Island',
+        'Viridian City'
+    ])
 })
