@@ -13,6 +13,11 @@ const {
 test('getGymleader: gets the gymleader belonging to a gym', () => {
     const fuchsiaCity = gyms.find(gym => gym.city === 'Fuchsia City')
     const gymLeader = getGymLeader(fuchsiaCity, trainers)
+    expect(gymLeader).toEqual(expect.objectContaining({
+        id: expect.any(Number),
+        name: expect.any(String),
+        pokemonIds: expect.any(Array)
+    }))
     expect(gymLeader.name).toBe('Koga')
 })
 
@@ -29,6 +34,8 @@ test('getTrainerPokemons: gets the pokemons belonging to a trainer', () => {
 test(`getTrainersPokemons: replaces trainerIds with 
         the pokemons belonging to a trainer for an array of trainers`, () => {
     const trainersWithPokemons = getTrainersPokemons(trainers, pokemons)
+
+    expect(trainersWithPokemons).toEqual(expect.any(Array))
 
     trainersWithPokemons.forEach(trainer => {
         expect(trainer).toEqual(expect.objectContaining({
