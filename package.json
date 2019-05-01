@@ -1,0 +1,14 @@
+{
+  "name": "data-transformations",
+  "version": "1.0.0",
+  "description": "A set of exercises for the data transformation day",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Codaisseur",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.7.1"
+  }
+}
