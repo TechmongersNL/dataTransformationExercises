@@ -18,10 +18,15 @@ const getAdultPokemons = (pokemons) => {
     return pokemons.filter(pokemon => pokemon.egg === "Not in Eggs")
 }
 
+const getPokemonImages = (pokemons) => {
+    return pokemons.map(pokemon => pokemon.img)
+}
+
 module.exports = {
     getPokeNames,
     getPokemonById,
     getRarePokemons,
     getMidSizedPokemon,
     getAdultPokemons,
+    getPokemonImages
 }
