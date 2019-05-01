@@ -1,4 +1,5 @@
 const { getPokemonById } = require('./1.map-filter-find')
+const { categorizePokemonsByRarity } = require('./2.reduce')
 
 const getGymLeader = (gym, trainers) => {
     return trainers.find(trainer => trainer.id === gym.trainerId)
@@ -51,9 +52,34 @@ const getBigGyms = (gyms, trainers) => {
     }, [])
 }
 
+const getRarestGym = (gyms, trainers, pokemons) => {
+    return gyms
+        .map(gym => {
+            const gymLeader = getGymLeader(gym, trainers)
+            const trainerPokemons = getTrainerPokemons(gymLeader, pokemons)
+
+            return {
+                gym,
+                pokemonsByRarity: categorizePokemonsByRarity(trainerPokemons)
+            }
+        })
+        .reduce((rarestGymSoFar, currentGym) => {
+            const legendaryCountRarestSoFar = rarestGymSoFar.pokemonsByRarity.legendary.length
+            const legendaryCountCurrentGym = currentGym.pokemonsByRarity.legendary.length
+
+            if (legendaryCountCurrentGym > legendaryCountRarestSoFar) {
+                return currentGym
+            }
+
+            return rarestGymSoFar
+        })
+        .gym
+}
+
 module.exports = {
     getGymLeader,
     getTrainerPokemons,
     getTrainersPokemons,
     getBigGyms,
+    getRarestGym,
 }

@@ -6,7 +6,8 @@ const {
     getTrainerPokemons,
     getTrainersPokemons,
     getGymLeader,
-    getBigGyms
+    getBigGyms,
+    getRarestGym
 } = require('./3.data-mining');
 
 test('getGymleader: gets the gymleader belonging to a gym', () => {
@@ -54,4 +55,9 @@ test('getBigGyms: gets the city names with gym leaders who have 4 pokemons or mo
         'Cinnabar Island',
         'Viridian City'
     ])
+})
+
+test('getRarestGym: gets the gym with the most legendary pokemon', () => {
+    const rarestGym = getRarestGym(gyms, trainers, pokemons)
+    expect(rarestGym).toEqual({ id: 1, city: 'Saffron City', trainerId: 2 })
 })
