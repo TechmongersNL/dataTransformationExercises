@@ -1,3 +1,6 @@
+const getGymLeader = (gym, trainers) => {
+    return trainers.find(trainer => trainer.id === gym.trainerId)
+}
 const getTrainerPokemons = (trainer, pokemons) => {
     return trainer.pokemonIds.map(id => {
         return pokemons.find(pokemon => pokemon.id === id)
@@ -16,8 +19,8 @@ const getTrainersPokemons = (trainers, pokemons) => {
 }
 
 
-
 module.exports = {
+    getGymLeader,
     getTrainerPokemons,
-    getTrainersPokemons
+    getTrainersPokemons,
 }
