@@ -1,24 +1,26 @@
-const pokemons = require("./pokeData");
+const getPokeNames = (pokemons) => {
+    return pokemons.map(pokemon => pokemon.name)
+}
 
-// 1. Write a function that transforms an array of pokemons into an array of pokemon names
-const getPokeNames = () => {
-  return pokemons.map((pokemon) => pokemon.name);
-};
+const getPokemonById = (pokemons, id) => {
+    return pokemons.find(pokemon => pokemon.id === id)
+}
 
-// 2. Write a function that recieves as parameter an `id` and gets the pokemon object with that same id
-const getPokemonById = undefined;
+const getRarePokemons = (pokemons) => {
+    return pokemons.filter(pokemon => pokemon.spawn_chance < 0.10)
+}
 
-// 3. Write a function that transforms an array of pokemon into an array of "rare" (spawn_chance is less than 0.1) pokemon
-const getRarePokemons = undefined;
+const getMidSizedPokemon = (pokemons) => {
+    return pokemons.find(pokemon => pokemon.weight === "38.0 kg")
+}
 
-// 4. Write a function that gets the pokemon that weighs "38.0 kg"
-const getMidSizedPokemon = undefined;
+const getAdultPokemons = (pokemons) => {
+    return pokemons.filter(pokemon => pokemon.egg === "Not in Eggs")
+}
 
-// 5. Write a function that transforms an array of all pokemon into an array of pokemon who cannot be found in eggs
-const getAdultPokemons = undefined;
-
-// 6. Write a function that transforms an array of pokemon into an array of imageUrls
-const getPokemonImages = undefined;
+const getPokemonImages = (pokemons) => {
+    return pokemons.map(pokemon => pokemon.img)
+}
 
 module.exports = {
   getPokeNames,
