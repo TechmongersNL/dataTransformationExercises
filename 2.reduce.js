@@ -41,9 +41,36 @@ const getHeaviestPokemon = (pokemons) => {
     })
 }
 
+const categorizePokemonsByRarity = (pokemons) => {
+    const RARE_SPAWN_CHANCE = 0.1
+    const LEGENDARY_SPAWN_CHANCE = 0.01
+
+    const initialAccumulator = {
+        common: [],
+        rare: [],
+        legendary: []
+    }
+
+    return pokemons.reduce((categories, currentPokemon) => {
+        if (currentPokemon.spawn_chance > RARE_SPAWN_CHANCE) {
+            categories.common.push(currentPokemon)
+            return categories
+        }
+
+        if (currentPokemon.spawn_chance > LEGENDARY_SPAWN_CHANCE) {
+            categories.rare.push(currentPokemon)
+            return categories
+        }
+
+        categories.legendary.push(currentPokemon)
+        return categories
+    }, initialAccumulator)
+}
+
 module.exports = {
     calculateTotalPokemonWeight,
     calculateAverageSpawnChance,
     calculateTotalEggDistance,
-    getHeaviestPokemon
+    getHeaviestPokemon,
+    categorizePokemonsByRarity
 }
