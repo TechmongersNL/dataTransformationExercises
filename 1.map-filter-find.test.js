@@ -11,11 +11,6 @@ test('getPokeNames: Transforms an array of pokemons into an array of pokemon nam
 test('getPokemonById: Gets a pokemon object by their id', () => {
     const id = 25
     const pokemon = getPokemonById(pokemons, id)
-    expect(pokemon).toEqual(expect.objectContaining({
-        id: expect.any(Number),
-        name: expect.any(String),
-        height: expect.any(String),
-    }))
     expect(pokemon.id).toBe(25)
     expect(pokemon.name).toBe('Pikachu')
     expect(pokemon.height).toBe('0.41 m')
