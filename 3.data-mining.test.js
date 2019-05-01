@@ -5,6 +5,12 @@ const gyms = require('./gymData')
 
 const { getTrainerPokemons, getTrainersPokemons, getGymLeader } = require('./3.data-mining');
 
+test('getGymleader: gets the gymleader belonging to a gym', () => {
+    const fuchsiaCity = gyms.find(gym => gym.city === 'Fuchsia City')
+    const gymLeader = getGymLeader(fuchsiaCity, trainers)
+    expect(gymLeader.name).toBe('Koga')
+})
+
 test('getTrainerPokemons: gets the pokemons belonging to a trainer', () => {
     const ash = trainers.find(trainer => trainer.name === 'Ash')
     const teamAsh = getTrainerPokemons(ash, pokemons)
@@ -14,12 +20,6 @@ test('getTrainerPokemons: gets the pokemons belonging to a trainer', () => {
         'Pikachu', "Bulbasaur", "Squirtle", "Charizard", "Pidgeotto", "Butterfree"
     ])
 });
-
-test('getGymleader: gets the gymleader belonging to a gym', () => {
-    const fuchsiaCity = gyms.find(gym => gym.city === 'Fuchsia City')
-    const gymLeader = getGymLeader(fuchsiaCity, trainers)
-    expect(gymLeader.name).toBe('Koga')
-})
 
 test(`getTrainersPokemons: replaces trainerIds with 
         the pokemons belonging to a trainer for an array of trainers`, () => {
