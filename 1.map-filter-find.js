@@ -10,8 +10,13 @@ const getRarePokemons = (pokemons) => {
     return pokemons.filter(pokemon => pokemon.spawn_chance < 0.10)
 }
 
+const getMidSizedPokemon = (pokemons) => {
+    return pokemons.find(pokemon => pokemon.weight === "38.0 kg")
+}
+
 module.exports = {
     getPokeNames,
     getPokemonById,
-    getRarePokemons
+    getRarePokemons,
+    getMidSizedPokemon
 }
