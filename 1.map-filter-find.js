@@ -14,9 +14,14 @@ const getMidSizedPokemon = (pokemons) => {
     return pokemons.find(pokemon => pokemon.weight === "38.0 kg")
 }
 
+const getAdultPokemons = (pokemons) => {
+    return pokemons.filter(pokemon => pokemon.egg === "Not in Eggs")
+}
+
 module.exports = {
     getPokeNames,
     getPokemonById,
     getRarePokemons,
-    getMidSizedPokemon
+    getMidSizedPokemon,
+    getAdultPokemons,
 }

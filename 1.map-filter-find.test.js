@@ -1,5 +1,5 @@
 const pokemons = require('./pokeData')
-const { getPokeNames, getPokemonById, getRarePokemons, getMidSizedPokemon } = require('./1.map-filter-find');
+const { getPokeNames, getPokemonById, getRarePokemons, getMidSizedPokemon, getAdultPokemons } = require('./1.map-filter-find');
 
 test('getPokeNames: Transforms an array of pokemons into an array of pokemon names', () => {
     const pokemonNames = getPokeNames(pokemons)
@@ -25,4 +25,10 @@ test('getRarePokemons: Transforms an array of pokemon into an array of "rare" (s
 test('getMidSizedPokemon: Gets the pokemon that weighs "38.0 kg"', () => {
     const pokeMonThatWeighs35kg = getMidSizedPokemon(pokemons)
     expect(pokeMonThatWeighs35kg.name).toBe("Fearow")
+})
+
+test('getAdultPokemons: Transforms an array of pokemon into an array of pokemon who cannot be found in eggs', () => {
+    const adults = getAdultPokemons(pokemons)
+    expect(adults.length).toBe(78)
+    expect(adults.every(pokemon => pokemon.egg === "Not in Eggs")).toBe(true)
 })
