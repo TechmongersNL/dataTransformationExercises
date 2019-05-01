@@ -1,5 +1,10 @@
 const pokemons = require('./pokeData')
-const { calculateTotalPokemonWeight, calculateAverageSpawnChance, calculateTotalEggDistance } = require('./2.reduce');
+const {
+    calculateTotalPokemonWeight,
+    calculateAverageSpawnChance,
+    calculateTotalEggDistance,
+    getHeaviestPokemon
+} = require('./2.reduce');
 
 test('calculateTotalPokemonWeight: calculates the combined weight of all 151 pokemon', () => {
     const totalweight = calculateTotalPokemonWeight(pokemons)
@@ -14,4 +19,9 @@ test('calculateAverageSpawnChance: calculates the average spawn_chance of a poke
 test('calculateTotalEggDistance: calculates how for you have to walk to hatch one of each pokemon egg', () => {
     const totalEggDistance = calculateTotalEggDistance(pokemons)
     expect(totalEggDistance).toBe(408)
+})
+
+test('getHeaviestPokemon: returns the heaviest pokemon from an array of pokemons', () => {
+    const heaviestPokemon = getHeaviestPokemon(pokemons)
+    expect(heaviestPokemon.id).toBe(143)
 })

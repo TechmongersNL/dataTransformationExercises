@@ -31,8 +31,19 @@ const calculateTotalEggDistance = (pokemons) => {
 //     }, 0)
 // }
 
+const getHeaviestPokemon = (pokemons) => {
+    return pokemons.reduce((heaviestSoFar, currentPokemon) => {
+        if (parseInt(heaviestSoFar.weight) > parseInt(currentPokemon.weight)) {
+            return heaviestSoFar
+        }
+
+        return currentPokemon
+    })
+}
+
 module.exports = {
     calculateTotalPokemonWeight,
     calculateAverageSpawnChance,
-    calculateTotalEggDistance
+    calculateTotalEggDistance,
+    getHeaviestPokemon
 }
