@@ -12,8 +12,8 @@ In that case: Use `map`, `filter`, `reduce` and `find`! --
 ## This repo has exercises with tests
 
 - There are test files set up that check the functionality of the functions you have to write.
-- Test files end with .test.js, write your code in the corresponding js. file. 
-- 1.map-filter-find.js are exercise that recap map, filter and find. Choose the appropriate method for each function.
+- Test files end with .test.js, write your code in the corresponding .js file. 
+- 1.map-filter-find.js are exercises that recap map, filter and find. Choose the appropriate method for each function.
 - 2.reduce.js are exercises that recap reduce and expand on more powerful ways to use it (it's super effective!).
 - 3.data-mining.js are exercises where you have to combine different pieces of data, (gyms, trainers and pokemon) to get the information you need. That can mean nesting maps & find or chaining array methods together in a multi-step process.
 
