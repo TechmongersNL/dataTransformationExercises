@@ -23,6 +23,8 @@ In that case: Use `map`, `filter`, `reduce` and `find`! --
 ```bash
 # Clone the repo
 git clone git@github.com:Codaisseur/dataTransFormationExercises.git
+# change directory
+cd dataTransFormationExercises
 # Install dependencies
 npm install
 # Run the exercises
