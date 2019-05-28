@@ -17,6 +17,10 @@ In that case: Use `map`, `filter`, `reduce` and `find`! --
 - 2.reduce.js are exercises that recap reduce and expand on more powerful ways to use it (it's super effective!).
 - 3.data-mining.js are exercises where you have to combine different pieces of data, (gyms, trainers and pokemon) to get the information you need. That can mean nesting maps & find or chaining array methods together in a multi-step process.
 
+## Solutions
+
+The solutions to these exercises can be found on the [feature/solutions](https://github.com/Codaisseur/dataTransFormationExercises/tree/feature/solutions) branch
+
 
 ## How to do these exercises:
 
