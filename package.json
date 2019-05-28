@@ -9,9 +9,19 @@
         "exercise2": "jest 2.reduce.test --watch",
         "exercise3": "jest 3.data-mining.test --watch"
     },
+    "jest": {
+        "testResultsProcessor": "./submitResults.js"
+    },
     "author": "Codaisseur",
     "license": "ISC",
     "devDependencies": {
         "jest": "^24.7.1"
+    },
+    "dependencies": {
+        "axios": "^0.19.0",
+        "git-user-email": "^0.2.2",
+        "git-user-info": "^1.0.1",
+        "git-user-name": "^2.0.0",
+        "gitconfig": "^2.0.8"
     }
 }
