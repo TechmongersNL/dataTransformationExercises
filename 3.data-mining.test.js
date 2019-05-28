@@ -26,9 +26,9 @@ test('getTrainerPokemons: gets the pokemons belonging to a trainer', () => {
     const teamAsh = getTrainerPokemons(ash, pokemons)
 
     expect(teamAsh).toEqual(expect.any(Array))
-    expect(teamAsh.map(pokemon => pokemon.name)).toEqual([
+    expect(teamAsh.map(pokemon => pokemon.name)).toEqual(expect.arrayContaining([
         'Pikachu', "Bulbasaur", "Squirtle", "Charizard", "Pidgeotto", "Butterfree"
-    ])
+    ]))
 });
 
 test(`getTrainersPokemons: replaces trainerIds with 
@@ -56,12 +56,12 @@ test(`getTrainersPokemons: replaces trainerIds with
 
 test('getBigGyms: gets the city names with gym leaders who have 4 pokemons or more', () => {
     const bigGymCities = getBigGyms(gyms, trainers)
-    expect(bigGymCities).toEqual([
+    expect(bigGymCities).toEqual(expect.arrayContaining([
         'Saffron City',
         'Fuchsia City',
         'Cinnabar Island',
         'Viridian City'
-    ])
+    ]))
 })
 
 test('getRarestGym: gets the gym with the most legendary pokemon', () => {
