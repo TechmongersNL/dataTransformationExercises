@@ -26,7 +26,43 @@ const getPsychicTrainersAndGyms = (gyms, trainers, pokemons) => {
   );
 };
 
+const getGymsWithPokemons = (gyms, trainers, pokemons, ...pokemonsToFind) => {
+  // Retrieve the pokemon objects
+  return (
+    pokemons
+      // Filter all the pokemons based on the ones we requested to find
+      .filter(pokemon => pokemonsToFind.includes(pokemon.name))
+      .map(pokemon => {
+        // Construct the object to be returned
+        return {
+          id: pokemon.id,
+          name: pokemon.name,
+          // Retrieve the trainers that own this pokemon
+          trainers: trainers.filter(trainer =>
+            trainer.pokemonIds.includes(pokemon.id)
+          ),
+          // Retrieve the gyms that are owned by these trainers
+          gyms: gyms.filter(gym => {
+            return trainers
+              .filter(trainer => trainer.pokemonIds.includes(pokemon.id))
+              .find(trainer => trainer.id === gym.trainerId);
+          })
+        };
+      })
+  );
+
+  return getTrainersAndGymsAndPokemons(gyms, trainers, pokemons)
+    .filter(trainer =>
+      trainer.pokemons.some(pokemon => pokemonsToFind.includes(pokemon.name))
+    )
+    .map(trainer => {
+      return {};
+      trainer.gym;
+    });
+};
+
 module.exports = {
   getPsychicTrainersAndGyms,
-  getTrainersAndGymsAndPokemons
+  getTrainersAndGymsAndPokemons,
+  getGymsWithPokemons
 };
