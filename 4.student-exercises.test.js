@@ -2,25 +2,20 @@ const pokemons = require("./pokeData");
 const trainers = require("./trainerData");
 const gyms = require("./gymData");
 
-const { getNextEvolution } = require("./4.student-exercises");
+const { getPsychicTrainersAndGyms } = require("./4.student-exercises");
 
-test("expect next evolution", () => {
-  const blastoise = pokemons.find(p => p.name === "Blastoise");
-  var evolution = getNextEvolution(blastoise);
-  expect(evolution).toEqual(
-    expect.objectContaining({
-      id: expect.any(Number),
-      name: expect.toEqual("Squirtle"),
-      num: expect.any(String),
-      type: expect.any(Array)
-    })
-  );
+test(`getPsychicTrainersAndGyms: expect a list of trainers with psychic pokemons.
+    also include (all) their pokemons and their gym`, () => {
+  const result = getPsychicTrainersAndGyms(gyms, trainers, pokemons);
+  expect(result.length).toEqual(2);
+  expect(result[0].name).toBe("Sabrina");
+  expect(result[1].name).toBe("Misty");
+  // Results should also contain gym
+  expect(result[0].gym).toEqual(expect.any(Object));
+  expect(result[1].gym).toEqual(expect.any(Object));
+  // Results should also contain array of pokemons
+  expect(result[0].pokemons).toEqual(expect.any(Array));
+  expect(result[1].pokemons).toEqual(expect.any(Array));
+  expect(result[0].pokemons.length).toBe(4);
+  expect(result[1].pokemons.length).toBe(2);
 });
-
-// test("expect evolve", () => {
-//   // Provide a list of pokemons to be evolved
-// });
-
-// test("expect ...", () => {
-//   // List of gyms that have psychic pokemons
-// });

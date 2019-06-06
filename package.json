@@ -4,7 +4,8 @@
   "description": "A set of exercises for the data transformation day",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "exercise": "jest 4.student-exercises.test --watch"
   },
   "author": "Codaisseur",
   "license": "ISC",
