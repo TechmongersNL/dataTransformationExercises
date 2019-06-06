@@ -1,3 +1,20 @@
+const getTrainersAndGymsAndPokemons = (gyms, trainers, pokemons) => {
+  // Combine trainers and pokemons and gyms
+  return (
+    trainers
+      // Map trainers to include their pokemons
+      .map(trainer => {
+        // Include the trainer's pokemons
+        trainer.pokemons = pokemons.filter(pokemon =>
+          trainer.pokemonIds.includes(pokemon.id)
+        );
+        // Include the trainer's gym
+        trainer.gym = gyms.filter(gym => gym.trainerId === trainer.id);
+        return trainer;
+      })
+  );
+};
+
 const getPsychicTrainersAndGyms = (gyms, trainers, pokemons) => {
   // Step 1: Combine trainers and psychic pokemons
   let trainersWithPsychicPokemons = trainers
@@ -22,5 +39,6 @@ const getPsychicTrainersAndGyms = (gyms, trainers, pokemons) => {
 };
 
 module.exports = {
-  getPsychicTrainersAndGyms
+  getPsychicTrainersAndGyms,
+  getTrainersAndGymsAndPokemons
 };

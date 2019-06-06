@@ -2,7 +2,28 @@ const pokemons = require("./pokeData");
 const trainers = require("./trainerData");
 const gyms = require("./gymData");
 
-const { getPsychicTrainersAndGyms } = require("./4.student-exercises");
+const {
+  getPsychicTrainersAndGyms,
+  getTrainersAndGymsAndPokemons
+} = require("./4.student-exercises");
+
+test("getTrainersAndGymsAndPokemons", () => {
+  // Get an array of trainers that contain their gyms and pokemons
+  const trainersAndGymsAndPokemons = getTrainersAndGymsAndPokemons(
+    gyms,
+    trainers,
+    pokemons
+  );
+  expect(trainersAndGymsAndPokemons.length).toBe(9);
+  // Expect each trainer to have a gym object
+  expect(trainersAndGymsAndPokemons.map(trainer => trainer.gym)).toEqual(
+    expect.any(Object)
+  );
+  // Expect each trainer to have a pokemon array
+  expect(trainersAndGymsAndPokemons.map(trainer => trainer.pokemons)).toEqual(
+    expect.any(Array)
+  );
+});
 
 /**
  * This function should return an array of trainers that have
