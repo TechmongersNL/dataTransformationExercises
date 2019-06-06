@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
-    "exercise": "jest 4.student-exercises.test --watch"
+    "exercise4": "jest 4.student-exercises.test --watch"
   },
   "author": "Codaisseur",
   "license": "ISC",
