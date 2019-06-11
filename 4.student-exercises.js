@@ -10,7 +10,11 @@ const getTrainersAndGymsAndPokemons = (gyms, trainers, pokemons) => {
         );
         // Include the trainer's gym
       const trainerGym = gyms.find(gym => gym.trainerId === trainer.id);
-        return trainer;
+        return {
+           ...trainer,
+           pokemons: trainerPokemons,
+           gym: trainerGym
+        }
       })
   );
 };
