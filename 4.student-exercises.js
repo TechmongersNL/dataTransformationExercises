@@ -5,7 +5,7 @@ const getTrainersAndGymsAndPokemons = (gyms, trainers, pokemons) => {
       // Map trainers to include their pokemons
       .map(trainer => {
         // Include the trainer's pokemons
-        trainer.pokemons = pokemons.filter(pokemon =>
+        const trainerPokemons = pokemons.filter(pokemon =>
           trainer.pokemonIds.includes(pokemon.id)
         );
         // Include the trainer's gym
