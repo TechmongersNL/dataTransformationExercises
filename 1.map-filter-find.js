@@ -3,7 +3,7 @@ const getPokeNames = (pokemons) => {
 }
 
 const getPokemonById = (pokemons, id) => {
-
+    console.log('hai')
 }
 
 module.exports = {

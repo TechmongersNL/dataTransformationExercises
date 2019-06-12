@@ -4,13 +4,20 @@
     "description": "A set of exercises for the data transformation day",
     "main": "index.js",
     "scripts": {
-        "test": "jest --watch",
-        "exercise1": "jest 1.map-filter-find.test --watch",
-        "exercise2": "jest 2.reduce.test --watch",
-        "exercise3": "jest 3.data-mining.test --watch"
+        "test": "jest --runInBand --watch"
     },
     "jest": {
-        "testResultsProcessor": "./submitResults.js"
+        "reporters": [
+            "default",
+            [
+                "<rootDir>/customReporter.js",
+                {
+                    "banana": "yes",
+                    "pineapple": "no"
+                }
+            ]
+        ],
+        "testSequencer": "./customSequencer.js"
     },
     "author": "Codaisseur",
     "license": "ISC",
@@ -19,9 +26,6 @@
     },
     "dependencies": {
         "axios": "^0.19.0",
-        "git-user-email": "^0.2.2",
-        "git-user-info": "^1.0.1",
-        "git-user-name": "^2.0.0",
         "gitconfig": "^2.0.8"
     }
 }
