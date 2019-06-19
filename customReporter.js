@@ -1,5 +1,6 @@
 const fs = require('fs')
 const gitconfig = require('gitconfig')
+const axios = require('axios')
 
 const testAttempted = status => status === 'failed' || status === 'passed'
 const testPassed = status => status === 'passed'
@@ -74,6 +75,11 @@ class MyCustomReporter {
             }).flat()
             .map(createReport)
 
+
+        // console.log('suiteResults:', suiteResults)
+        // console.log('testReports:', testReports)
+        // console.log('testResults.testResults:', testReports.testResults)
+
         const output = {
             evaluator: "STUDENT_LOCAL_JEST_RUN",
             exercise,
@@ -89,6 +95,15 @@ class MyCustomReporter {
         }
 
         console.log(output)
+        
+        //Sending the raw data to the db  
+        axios.post('http://localhost:4000/raw_data', output )
+          .then(function (response) {
+            console.log(response.data.message);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     // Called before a single test starts
@@ -123,7 +138,7 @@ class MyCustomReporter {
 //           {
 //             "attempted": true,
 //             "passed": true,
-//             "key": "[A] getPokeNames: Transforms an array of pokemons into an array of pokemon names",
+//             "key": "getPokeNames: Transforms an array of pokemons into an array of pokeman names",
 //             "meta": {
 //               "learning_goals": [
 //                 "use array map"
