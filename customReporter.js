@@ -10,8 +10,10 @@ const createKey = (test, index) => {
 }
 
 const createReport = (test, index) => {
+    // console.log('test object:', test)
     if(!test) return {}
     return {
+        exercise: test.ancestorTitles[0],
         attempted: testAttempted(test.status),
         passed: testPassed(test.status),
         key: createKey(test, index),
@@ -82,20 +84,20 @@ class MyCustomReporter {
 
         const output = {
             evaluator: "STUDENT_LOCAL_JEST_RUN",
-            exercise,
+            day: exercise,
             context: '(unknown)',
             input: '(unknown)',
             git_name,
             git_email,
             evaluation: [{
                 key: 'ROOT',
-                children: testReports,
+                questions: testReports,
                 score
             }]
         }
 
         console.log(output)
-        
+
         //Sending the raw data to the db  
         axios.post('http://localhost:4000/raw_data', output )
           .then(function (response) {
