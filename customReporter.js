@@ -89,14 +89,10 @@ class MyCustomReporter {
             input: '(unknown)',
             git_name,
             git_email,
-            evaluation: [{
-                key: 'ROOT',
-                questions: testReports,
-                score
-            }]
+            evaluation: testReports
         }
 
-        console.log(output)
+        console.log('output:', output)
 
         //Sending the raw data to the db  
         axios.post('http://localhost:4000/raw_data', output )
@@ -106,7 +102,43 @@ class MyCustomReporter {
           .catch(function (error) {
             console.log(error);
           });
+
+        const testOutput = {
+            day:'data-transformations@1.0.0',
+            gitName:'kerenKi',
+            gitEmail:'kkinberg13@gmail.com',
+            evaluation:[
+                         {
+                            exercise: 'Array methods: map, filter & find: ',
+                            attempted: true,
+                            passed: true,
+                            key:
+                            '[A] getPokeNames: Transforms an array of pokemons into an array of pokemon names',
+                            failureMessages: [],
+                            meta: { learning_goals: [Array] } 
+                        },
+                        { 
+                            exercise: 'Array methods: map, filter & find: ',
+                            attempted: true,
+                            passed: true,
+                            key: '[B] getPokemonById: Gets a pokemon object by their id',
+                            failureMessages: [],
+                            meta: { learning_goals: [Array] } 
+                        }
+                    ]
+        }
+
+          axios.post('http://localhost:4000/evaluations', testOutput )
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+       
     }
+       
+
 
     // Called before a single test starts
     onTestStart(test){
