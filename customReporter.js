@@ -1,6 +1,10 @@
 const fs = require('fs')
 const gitconfig = require('gitconfig')
 const axios = require('axios')
+//Importing the baseUrl
+const setting = require('./settings')
+
+const { baseUrl } = setting
 
 const testAttempted = status => status === 'failed' || status === 'passed'
 const testPassed = status => status === 'passed'
@@ -95,7 +99,7 @@ class MyCustomReporter {
         console.log('output:', output)
 
         //Sending the raw data to the db  
-        axios.post('http://localhost:4000/raw_data', output )
+        axios.post(`${baseUrl}/raw_data`, output )
           .then(function (response) {
             console.log(response.data.message);
           })
@@ -155,7 +159,8 @@ class MyCustomReporter {
                     ]
         }
 
-          axios.post('http://localhost:4000/evaluations', output )
+        
+          axios.post(`${baseUrl}/evaluations`, output )
           .then(function (response) {
             console.log(response.data);
           })
