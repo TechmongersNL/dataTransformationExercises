@@ -96,7 +96,7 @@ class MyCustomReporter {
             evaluation: testReports
         }
 
-        console.log('output:', output)
+        // console.log('output:', output)
 
         //Sending the raw data to the db  
         axios.post(`${baseUrl}/raw_data`, output )
