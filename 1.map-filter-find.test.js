@@ -1,5 +1,7 @@
 const pokemons = require('./pokeData')
-const { getPokeNames, getPokemonById, getRarePokemons, getMidSizedPokemon, getAdultPokemons, getPokemonImages } = require('./1.map-filter-find');
+const { getPokeNames, getPokemonById, getRarePokemons, 
+    getMidSizedPokemon, getAdultPokemons, 
+getPokemonImages } = require('./1.map-filter-find');
 
 test('getPokeNames: Transforms an array of pokemons into an array of pokemon names', () => {
     const pokemonNames = getPokeNames(pokemons)
