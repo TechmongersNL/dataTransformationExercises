@@ -28,8 +28,8 @@ test('getRarePokemons: Transforms an array of pokemon into an array of "rare" (s
 })
 
 test('getMidSizedPokemon: Gets the pokemon that weighs "38.0 kg"', () => {
-    const pokeMonThatWeighs35kg = getMidSizedPokemon(pokemons)
-    expect(pokeMonThatWeighs35kg.name).toBe("Fearow")
+    const pokeMonThatWeighs38kg = getMidSizedPokemon(pokemons)
+    expect(pokeMonThatWeighs38kg.name).toBe("Fearow")
 })
 
 test('getAdultPokemons: Transforms an array of pokemon into an array of pokemon who cannot be found in eggs', () => {
@@ -40,4 +40,7 @@ test('getAdultPokemons: Transforms an array of pokemon into an array of pokemon 
 
 test('getPokemonImages: Transforms an array of pokemon into an array of imageUrls', () => {
     const imageUrls = getPokemonImages(pokemons)
+    imageUrls.forEach(imageUrl => {
+        expect(typeof imageUrl).toBe('string')
+    });
 })
