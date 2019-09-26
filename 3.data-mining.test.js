@@ -31,7 +31,7 @@ test('getTrainerPokemons: gets the pokemons belonging to a trainer', () => {
     ]))
 });
 
-test(`getTrainersPokemons: replaces trainerIds with 
+test(`getTrainersPokemons: replaces pokemonIds with 
         the pokemons belonging to a trainer for an array of trainers`, () => {
     const trainersWithPokemons = getTrainersPokemons(trainers, pokemons)
 
