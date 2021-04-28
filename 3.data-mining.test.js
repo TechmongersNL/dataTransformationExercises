@@ -64,7 +64,7 @@ test('getBigGyms: gets the city names with gym leaders who have 4 pokemons or mo
     ]))
 })
 
-test('getRarestGym: gets the gym with the most legendary pokemon', () => {
+test('getRarestGym: gets the gym with the most legendary (spawn_chance < 0.01) pokemon', () => {
     const rarestGym = getRarestGym(gyms, trainers, pokemons)
     expect(rarestGym).toEqual({ id: 1, city: 'Saffron City', trainerId: 2 })
 })
