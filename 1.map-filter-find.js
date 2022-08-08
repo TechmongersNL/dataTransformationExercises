@@ -1,29 +1,30 @@
-const getPokeNames = (pokemons) => {
-    return pokemons.map(pokemon => pokemon.name)
-}
+const pokemons = require("./pokeData");
 
-const getPokemonById = (pokemons, id) => {
-    const singlePokemon = pokemons.find((pokemon) => {
-        // console.log('ID OF CURRENT POKEMON:', pokemon.id)
-        // console.log("ID WE ARE LOOKING FOR:", id)
-        return pokemon.id === id
+// 1. Transforms an array of pokemons into an array of pokemon names
+const getPokeNames = () => {
+  return pokemons.map((pokemon) => pokemon.name);
+};
 
-    })
+// 2. Gets a pokemon object by their id
+const getPokemonById = (id) => {};
 
-    return singlePokemon
-}
+// 3. Transforms an array of pokemon into an array of "rare" (spawn_chance is less than 0.1) pokemon
+const getRarePokemons = () => {};
 
-const getRarePokemons = (pokemons) => {
+// 4.  Gets the pokemon that weighs "38.0 kg"
+const getMidSizedPokemon = () => {};
 
-}
+// 5. Transforms an array of pokemon into an array of pokemon who cannot be found in eggs
+const getAdultPokemons = () => {};
 
-const getMidSizedPokemon = (pokemons) => {
-
-}
+// 6. Transforms an array of pokemon into an array of imageUrls
+const getPokemonImages = () => {};
 
 module.exports = {
-    getPokeNames,
-    getPokemonById,
-    getRarePokemons,
-    getMidSizedPokemon
-}
+  getPokeNames,
+  getPokemonById,
+  getRarePokemons,
+  getMidSizedPokemon,
+  getAdultPokemons,
+  getPokemonImages,
+};
