@@ -1,18 +1,26 @@
-// 1. Given an a `gym` object and an array of `trainers` returns the trainer object for that gym.
-const getGymLeader = (gym, trainers) => {};
+const pokemons = require("./pokeData");
+const trainers = require("./trainerData");
+const gyms = require("./gymData");
 
-// 2. Gets the pokemons belonging to a trainer
-const getTrainerPokemons = (trainer, pokemons) => {};
+// 1. Write a function that receives a `gym` object and returns the trainer object for that gym.
+const getGymLeader = undefined;
 
-// 3. replaces pokemonIds with the pokemons belonging to a trainer for every trainer on an array
+// 2. Write a function that receives a `trainer` object and gets the pokemons belonging to that trainer
+const getTrainerPokemons = undefined;
+
+// 3. Write a function that replaces pokemonIds from the trainers with the actual pokemons belonging to each trainer.
+// It gets NO parameters
+
 // trainer currently:
 // { id: 1, name: 'Brock', pokemonIds: [74, 95] },
+
 // Expected output:
 // { id: 1, name: "Brock", pokemons: [{ id: 74, .... }, { id: 95, .... }] }
-const getTrainersPokemons = (trainers, pokemons) => {};
+const getTrainersPokemons = undefined;
 
-// 4. Gets the city NAMES with gym leaders who have 4 pokemons or more
-const getBigGyms = (gyms, trainers) => {};
+// 4. Write a function that gets the NAMES of cities with gym leaders who have 4 pokemons or more
+// It gets NO parameters
+const getBigGyms = undefined;
 
 module.exports = {
   getGymLeader,
