@@ -7,12 +7,11 @@ const {
   getTrainersPokemons,
   getGymLeader,
   getBigGyms,
-  getRarestGym,
 } = require("./2.data-mining");
 
 test("getGymleader: gets the gymleader belonging to a gym", () => {
   const fuchsiaCity = gyms.find((gym) => gym.city === "Fuchsia City");
-  const gymLeader = getGymLeader(fuchsiaCity, trainers);
+  const gymLeader = getGymLeader(fuchsiaCity);
   expect(gymLeader).toEqual(
     expect.objectContaining({
       id: expect.any(Number),
@@ -25,7 +24,7 @@ test("getGymleader: gets the gymleader belonging to a gym", () => {
 
 test("getTrainerPokemons: gets the pokemons belonging to a trainer", () => {
   const ash = trainers.find((trainer) => trainer.name === "Ash");
-  const teamAsh = getTrainerPokemons(ash, pokemons);
+  const teamAsh = getTrainerPokemons(ash);
 
   expect(teamAsh).toEqual(expect.any(Array));
   expect(teamAsh.map((pokemon) => pokemon.name)).toEqual(
@@ -42,7 +41,7 @@ test("getTrainerPokemons: gets the pokemons belonging to a trainer", () => {
 
 test(`getTrainersPokemons: replaces pokemonIds with 
         the pokemons belonging to a trainer for an array of trainers`, () => {
-  const trainersWithPokemons = getTrainersPokemons(trainers, pokemons);
+  const trainersWithPokemons = getTrainersPokemons();
 
   expect(trainersWithPokemons).toEqual(expect.any(Array));
 
@@ -68,7 +67,7 @@ test(`getTrainersPokemons: replaces pokemonIds with
 });
 
 test("getBigGyms: gets the city names with gym leaders who have 4 pokemons or more", () => {
-  const bigGymCities = getBigGyms(gyms, trainers);
+  const bigGymCities = getBigGyms();
   expect(bigGymCities).toEqual(
     expect.arrayContaining([
       "Saffron City",
