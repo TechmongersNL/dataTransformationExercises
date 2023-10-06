@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest --watch",
     "exercise1": "jest 1.map-filter-find.test --watch",
-    "exercise2": "jest 2.data-mining.test --watch",
-    "exercise3": "jest 3.reduce.test --watch",
+    "exercise2": "jest 2.reduce.test --watch",
+    "exercise3": "jest 3.data-mining.test --watch",
     "exercise4": "jest 4.student-exercises.test --watch"
   },
   "author": "Codaisseur",

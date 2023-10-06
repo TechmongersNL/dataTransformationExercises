@@ -1,26 +1,26 @@
 const getPokeNames = (pokemons) => {
-    return pokemons.map(pokemon => pokemon.name)
-}
+  return pokemons.map((pokemon) => pokemon.name);
+};
 
 const getPokemonById = (pokemons, id) => {
-    return pokemons.find(pokemon => pokemon.id === id)
-}
+  return pokemons.find((pokemon) => pokemon.id === id);
+};
 
 const getRarePokemons = (pokemons) => {
-    return pokemons.filter(pokemon => pokemon.spawn_chance < 0.10)
-}
+  return pokemons.filter((pokemon) => pokemon.spawn_chance < 0.1);
+};
 
 const getMidSizedPokemon = (pokemons) => {
-    return pokemons.find(pokemon => pokemon.weight === "38.0 kg")
-}
+  return pokemons.find((pokemon) => pokemon.weight === "38.0 kg");
+};
 
 const getAdultPokemons = (pokemons) => {
-    return pokemons.filter(pokemon => pokemon.egg === "Not in Eggs")
-}
+  return pokemons.filter((pokemon) => pokemon.egg === "Not in Eggs");
+};
 
 const getPokemonImages = (pokemons) => {
-    return pokemons.map(pokemon => pokemon.img)
-}
+  return pokemons.map((pokemon) => pokemon.img);
+};
 
 module.exports = {
   getPokeNames,

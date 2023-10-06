@@ -1,24 +1,23 @@
-const { getPokemonById } = require('./1.map-filter-find')
-const { categorizePokemonsByRarity } = require('./2.reduce')
+const { getPokemonById } = require("./1.map-filter-find");
+const { categorizePokemonsByRarity } = require("./2.reduce");
 
 const getGymLeader = (gym, trainers) => {
-    return trainers.find(trainer => trainer.id === gym.trainerId)
-}
+  return trainers.find((trainer) => trainer.id === gym.trainerId);
+};
 const getTrainerPokemons = (trainer, pokemons) => {
-    return pokemons.filter(pokemon => trainer.pokemonIds.includes(pokemon.id))
-}
+  return pokemons.filter((pokemon) => trainer.pokemonIds.includes(pokemon.id));
+};
 
 const getTrainersPokemons = (trainers, pokemons) => {
-    return trainers.map(trainer => {
-        const trainerPokemons = getTrainerPokemons(trainer, pokemons)
-        return {
-            id: trainer.id,
-            name: trainer.name,
-            pokemons: trainerPokemons
-        }
-    })
-}
-
+  return trainers.map((trainer) => {
+    const trainerPokemons = getTrainerPokemons(trainer, pokemons);
+    return {
+      id: trainer.id,
+      name: trainer.name,
+      pokemons: trainerPokemons,
+    };
+  });
+};
 
 // Multi step solution:
 //
@@ -38,46 +37,47 @@ const getTrainersPokemons = (trainers, pokemons) => {
 // }
 
 const getBigGyms = (gyms, trainers) => {
-    return gyms.reduce((bigGymNames, currentGym) => {
-        const gymLeader = getGymLeader(currentGym, trainers)
+  return gyms.reduce((bigGymNames, currentGym) => {
+    const gymLeader = getGymLeader(currentGym, trainers);
 
-        if (gymLeader.pokemonIds.length > 3) {
-            bigGymNames.push(currentGym.city)
-            return bigGymNames
-        }
+    if (gymLeader.pokemonIds.length > 3) {
+      bigGymNames.push(currentGym.city);
+      return bigGymNames;
+    }
 
-        return bigGymNames
-    }, [])
-}
+    return bigGymNames;
+  }, []);
+};
 
 const getRarestGym = (gyms, trainers, pokemons) => {
-    return gyms
-        .map(gym => {
-            const gymLeader = getGymLeader(gym, trainers)
-            const trainerPokemons = getTrainerPokemons(gymLeader, pokemons)
+  return gyms
+    .map((gym) => {
+      const gymLeader = getGymLeader(gym, trainers);
+      const trainerPokemons = getTrainerPokemons(gymLeader, pokemons);
 
-            return {
-                gym,
-                pokemonsByRarity: categorizePokemonsByRarity(trainerPokemons)
-            }
-        })
-        .reduce((rarestGymSoFar, currentGym) => {
-            const legendaryCountRarestSoFar = rarestGymSoFar.pokemonsByRarity.legendary.length
-            const legendaryCountCurrentGym = currentGym.pokemonsByRarity.legendary.length
+      return {
+        gym,
+        pokemonsByRarity: categorizePokemonsByRarity(trainerPokemons),
+      };
+    })
+    .reduce((rarestGymSoFar, currentGym) => {
+      const legendaryCountRarestSoFar =
+        rarestGymSoFar.pokemonsByRarity.legendary.length;
+      const legendaryCountCurrentGym =
+        currentGym.pokemonsByRarity.legendary.length;
 
-            if (legendaryCountCurrentGym > legendaryCountRarestSoFar) {
-                return currentGym
-            }
+      if (legendaryCountCurrentGym > legendaryCountRarestSoFar) {
+        return currentGym;
+      }
 
-            return rarestGymSoFar
-        })
-        .gym
-}
+      return rarestGymSoFar;
+    }).gym;
+};
 
 module.exports = {
-    getGymLeader,
-    getTrainerPokemons,
-    getTrainersPokemons,
-    getBigGyms,
-    getRarestGym,
-}
+  getGymLeader,
+  getTrainerPokemons,
+  getTrainersPokemons,
+  getBigGyms,
+  getRarestGym,
+};
