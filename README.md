@@ -20,15 +20,15 @@ If we have time we will learn about another array method called `reduce`.
 
 ## Solutions
 
-The solutions to these exercises can be found on the [feature/solutions](https://github.com/Codaisseur/dataTransFormationExercises/tree/feature/solutions) branch
+The solutions to these exercises can be found on the [feature/solutions](https://github.com/TechmongersNL/dataTransformationExercises/tree/feature/solutions) branch
 
 ## How to do these exercises:
 
 ```bash
 # Clone the repo
-git clone git@github.com:Codaisseur/dataTransFormationExercises.git
+git clone git@github.com:TechmongersNL/dataTransformationExercises.git
 # change directory
-cd dataTransFormationExercises
+cd dataTransformationExercises
 # Install dependencies
 npm install
 # Run the exercises
